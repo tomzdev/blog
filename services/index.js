@@ -227,7 +227,7 @@ export const getComments = async (slug) => {
         comment
       }
     }
-  `;
+  `
 
   const result = await request(graphqlAPI, query, { slug });
 
