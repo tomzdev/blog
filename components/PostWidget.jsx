@@ -1,9 +1,9 @@
 //PRIMO CONTAINER DELLA PARTE LATERALE DESTRA CHE CONTIENE POST RECENTI/CORRELATI
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
+import 'moment/locale/it';
 import Link from 'next/link';
 
-import { grpahCMSImageLoader } from '../util';
 import { getSimilarPosts, getRecentPosts } from '../services';
 
 const PostWidget = ({ categories, slug }) => {
@@ -22,6 +22,7 @@ const PostWidget = ({ categories, slug }) => {
   }, [slug]);
 
   console.log(relatedPosts);
+  moment.locale('it');
 
   return (
     <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
@@ -29,18 +30,19 @@ const PostWidget = ({ categories, slug }) => {
       {relatedPosts.map((post, index) => (
         <div key={index} className="flex items-center w-full mb-4">
           <div className="w-16 flex-none">
-            <img
-              loader={grpahCMSImageLoader}
-              alt={post.title}
-              height="60px"
-              width="60px"
-              unoptimized
-              className="align-middle rounded-full"
-              src={post.featuredImage.url}
-            />
+            <div class="aspectRatio">
+              <img
+                alt={post.title}
+                height="60px"
+                width="60px"
+                unoptimized
+                className="object-cover rounded-full"
+                src={post.featuredImage.url}
+              />
+            </div>
           </div>
           <div className="flex-grow ml-4">
-            <p className="text-gray-500 font-xs">{moment(post.createdAt).format('DD MMM, YYYY')}</p>
+            <p className="text-gray-500 font-xs">{moment(post.createdAt).format('DD MMMM, YYYY')}</p>
             <Link href={`/post/${post.slug}`} className="text-md" key={index}>{post.title}</Link>
           </div>
         </div>
