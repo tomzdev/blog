@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-import ReactHtmlParser from 'react-html-parser';
 
 const PostDetail = ({ post }) => {
   const getContentFragment = (index, text, obj, type) => {
