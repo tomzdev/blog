@@ -36,6 +36,22 @@ const PostDetail = ({ post }) => {
             src={obj.src}
           />
         );
+        case 'bullet-list':
+          return (
+            <ul key={index} className="mb-8">
+              {typeObj.children.map((item, itemIndex) => (
+                <li key={itemIndex}>{getContentFragment(itemIndex, item.text, item)}</li>
+              ))}
+            </ul>
+          );        
+          case 'ordered-list':
+            return (
+              <ol key={index} className="mb-8">
+                {typeObj.children.map((item, itemIndex) => (
+                  <li key={itemIndex}>{getContentFragment(itemIndex, item.text, item)}</li>
+                ))}
+              </ol>
+            );          
       default:
         return modifiedText;
     }
