@@ -1,4 +1,4 @@
-import React from 'react'; //grenz
+import React from 'react';
 import moment from 'moment';
 import ReactHtmlParser from 'react-html-parser';
 
