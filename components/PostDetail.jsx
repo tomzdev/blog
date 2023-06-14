@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import ReactHtmlParser from 'react-html-parser';
 
 const PostDetail = ({ post }) => {
   const getContentFragment = (index, text, obj, type) => {
@@ -36,22 +37,10 @@ const PostDetail = ({ post }) => {
             src={obj.src}
           />
         );
-        case 'bullet-list':
-          return (
-            <ul key={index} className="mb-8">
-              {typeObj.children.map((item, itemIndex) => (
-                <li key={itemIndex}>{getContentFragment(itemIndex, item.text, item)}</li>
-              ))}
-            </ul>
-          );        
-          case 'ordered-list':
-            return (
-              <ol key={index} className="mb-8">
-                {typeObj.children.map((item, itemIndex) => (
-                  <li key={itemIndex}>{getContentFragment(itemIndex, item.text, item)}</li>
-                ))}
-              </ol>
-            );          
+      case 'bulleted-list':
+        return <ul key={index}>{modifiedText.map((item, i) => <li key={i}>{item}</li>)}</ul>;
+      case 'numbered-list':
+        return <ol key={index}>{modifiedText.map((item, i) => <li key={i}>{item}</li>)}</ol>;
       default:
         return modifiedText;
     }
@@ -88,6 +77,7 @@ const PostDetail = ({ post }) => {
 
             return getContentFragment(index, children, typeObj, typeObj.type);
           })}
+          {ReactHtmlParser(post.content.html)}
         </div>
       </div>
 
