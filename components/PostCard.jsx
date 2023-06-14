@@ -5,8 +5,6 @@ import Link from 'next/link';
 //import { grpahCMSImageLoader } from '../util';
 
 const PostCard = ({ post }) => {
-  console.log(post);
-  console.log("URL dell'immagine profilo autore: " + post.author.photo.url);
   return(
   <div className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
     <div className="relative overflow-hidden shadow-md pb-80 mb-6">

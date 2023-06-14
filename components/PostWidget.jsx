@@ -20,8 +20,7 @@ const PostWidget = ({ categories, slug }) => {
       });
     }
   }, [slug]);
-
-  console.log(relatedPosts);
+  
   moment.locale('it');
 
   return (
